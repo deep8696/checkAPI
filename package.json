@@ -10,5 +10,5 @@
     "@azure/functions": "^4.0.0",
     "axios": "^1.6.8"
   },
-  "main": "src/apiCheck/*.js"
+  "main": "/apiCheck/*.js"
 }
