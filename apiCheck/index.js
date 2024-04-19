@@ -1,6 +1,8 @@
 //apiCheck for Sobeys
 
 const axios = require('axios');
+require('dotenv').config();
+
 
 // APIs to be checked
 const apis = [
@@ -8,19 +10,19 @@ const apis = [
         name: 'Getting GTIN Product hierarchy',
         url: 'https://sbyccpreis-apim.azure-api.net/product/v1/api/products/0068780954401/654749351000/fullHierarchy',
         method: 'GET',
-        apiKey: '2d556ed44244452297b8948b9159f3ee'
+        apiKey: process.env.API_KEY
     },
     {
         name: 'Getting Article detail',
         url: 'https://sbyccpreis-apim.azure-api.net/SobeysMasterData/1.0.0/api/article/376',
         method: 'GET',
-        apiKey: '2d556ed44244452297b8948b9159f3ee'
+        apiKey: process.env.API_KEY
     },
     {
         name: 'Searching SAP for an article',
         url: 'https://sbyccpreis-apim.azure-api.net/Product/1.0.0/api/article',
         method: 'POST',
-        apiKey: '2d556ed44244452297b8948b9159f3ee',
+        apiKey: process.env.API_KEY,
         body: {
             "ArticleNumber": "849064",
             "Description": "",
@@ -122,8 +124,8 @@ async function checkAPI(api) {
 
 // Function to send email with API statuses
 async function sendEmail(apiStatuses) {
-    const mailjetApiKey = '0ed06a02a05337318bc70d8e05e634ee';
-    const mailjetApiSecret = 'ba6b805853276001b90b5b5e690c2e09';
+    const mailjetApiKey = process.env.MAILJET_API;
+    const mailjetApiSecret = process.env.MAILJET_SECRECT_KEY;
     const senderEmail = 'dp6076@gmail.com';
     const recipientEmails = ['pateldeep8696@gmail.com'];
 
